@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const apiRouter = require('./routes/api');
+const body_parser = require('body-parser');
 
 const mongoUri = 'mongodb+srv://jack-wilson:Sophie08@main-cluster-ymiht.mongodb.net/test?retryWrites=true';
 
@@ -16,6 +17,8 @@ mongoose.connection.once('open', () => {
 });
 
 const app = express();
+
+app.use(body_parser.json());
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
